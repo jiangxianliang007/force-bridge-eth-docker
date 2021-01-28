@@ -14,6 +14,7 @@ RUN cd force-bridge-eth/offchain-modules/eth-proof && npm install
 COPY ./force-eth-cli /bin/
 COPY ./config.toml .
 COPY ./entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
 
 EXPOSE 3003
 ENTRYPOINT ["/opt/entrypoint.sh"]
