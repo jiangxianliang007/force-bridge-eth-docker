@@ -24,10 +24,10 @@ force-server() {
   RUST_LOG=error,force=info RUST_TRACEBACK=1 force-eth-cli dapp server --config-path ./config.toml --ckb-private-key-path ${CKB_MINT_PRIVKY}  --listen-url 0.0.0.0:3003 --db-path ${DB_PATH}
 }
 ckb-indexer() {
- force-eth-cli dapp ckb-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-indexer-url ${INDEXER_URL}
+ force-eth-cli dapp ckb-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-rpc-url ${CKB_URL} --ckb-indexer-url ${INDEXER_URL}
 }
 eth-indexer() {
- force-eth-cli dapp eth-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-rpc-url ${CKB_URL} --ckb-indexer-url ${INDEXER_URL}
+ force-eth-cli dapp eth-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-indexer-url ${INDEXER_URL}
 }
 ckb-tx-relayer() {
  force-eth-cli dapp ckb-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -k ${ETH_UNLOCK_PRIVKEY}
