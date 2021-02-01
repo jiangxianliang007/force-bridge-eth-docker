@@ -35,9 +35,11 @@ ckb-tx-relayer() {
 eth-tx-relayer() {
  force-eth-cli dapp ckb-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -k ${CKB_MINT_PRIVKY}
 }
-
+hello() {
+ echo "hello world"
+}
 case $1 in
-   ckb-header-relayy)
+   ckb-header-relay)
       ckb-header-relay
       ;;
    eth-header-relay)
@@ -59,6 +61,6 @@ case $1 in
       eth-tx-relayer
       ;;
    *)
-      force-server
+      hello
       ;;
 esac
