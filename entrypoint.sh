@@ -27,7 +27,8 @@ ckb-indexer() {
  force-eth-cli dapp ckb-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-rpc-url ${CKB_URL} --ckb-indexer-url ${INDEXER_URL}
 }
 eth-indexer() {
- force-eth-cli dapp eth-indexer --config-path ./config.toml --db-path ${DB_PATH} --ckb-indexer-url ${INDEXER_URL}
+ cd /opt/force-bridge-eth/offchain-modules/
+ force-eth-cli dapp eth-indexer --config-path /opt/config.toml --db-path ${DB_PATH} --ckb-indexer-url ${INDEXER_URL}
 }
 ckb-tx-relayer() {
  force-eth-cli dapp ckb-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -k ${ETH_UNLOCK_PRIVKEY}
