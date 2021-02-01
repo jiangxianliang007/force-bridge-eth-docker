@@ -33,7 +33,7 @@ ckb-tx-relayer() {
  force-eth-cli dapp ckb-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -k ${ETH_UNLOCK_PRIVKEY}
 }
 eth-tx-relayer() {
- force-eth-cli dapp eth-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -k ${CKB_MINT_PRIVKY}
+ force-eth-cli dapp eth-tx-relayer --config-path ./config.toml --db-path ${DB_PATH} -p ${CKB_MINT_PRIVKY}
 }
 hello() {
  echo "hello world"
