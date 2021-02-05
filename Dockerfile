@@ -17,6 +17,7 @@ COPY ./force-eth-cli /bin/
 COPY ./config.toml /opt/
 COPY ./entrypoint.sh /opt/
 RUN chmod +x /opt/entrypoint.sh
+RUN mkdir logs
 
 EXPOSE 3003
 ENTRYPOINT ["/opt/entrypoint.sh"]
