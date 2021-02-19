@@ -1,7 +1,6 @@
 FROM node:14.15.0
-#FROM ubuntu:18.04
 
-ENV BRANCH dapp-lib-testnet
+ENV BRANCH orderbook_dex
 RUN apt-get update && apt-get install -y \
  openssl \
  ca-certificates \
@@ -17,7 +16,6 @@ COPY ./force-eth-cli /bin/
 COPY ./config.toml /opt/
 COPY ./entrypoint.sh /opt/
 RUN chmod +x /opt/entrypoint.sh
-RUN mkdir logs
 
 EXPOSE 3003
 ENTRYPOINT ["/opt/entrypoint.sh"]
