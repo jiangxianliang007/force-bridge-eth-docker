@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt
 
 RUN git clone -b ${BRANCH} https://github.com/nervosnetwork/force-bridge-eth.git
-RUN cd force-bridge-eth/offchain-modules/ \
-    rm -rf eth-proof
-RUN cd force-bridge-eth/offchain-modules/ && git clone https://github.com/LeonLi000/eth-proof.git && cd eth-proof && git checkout 0a2107d196842039b5f032ee57b953a99d6e3fd4 && yarn
+RUN cd force-bridge-eth/ \
+    git submodule update --init
+RUN cd force-bridge-eth/offchain-modules/eth-proof && yarn
 COPY ./force-eth-cli /bin/
 COPY ./config.toml /opt/
 COPY ./entrypoint.sh /opt/
