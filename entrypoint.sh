@@ -9,6 +9,7 @@ DB_PATH=mysql://root:root@127.0.0.1:3306/${DB_NAME}
 HEADER_RELAY_PRIVKEY=1
 CKB_MINT_PRIVKY=2
 ETH_UNLOCK_PRIVKEY=2
+API_SERVER_PRIVKEY="4 5"
 
 cd /opt/force-bridge-eth/offchain-modules/
 
@@ -19,7 +20,7 @@ eth-header-relay() {
  force-eth-cli eth-relay --config-path /opt/config.toml -k ${HEADER_RELAY_PRIVKEY} --multisig-privkeys 1 > /opt/logs/eth-header-relay.log 2>&1
 }
 force-server() {
- force-eth-cli dapp server --config-path /opt/config.toml --ckb-private-key-path ${CKB_MINT_PRIVKY}  --listen-url 0.0.0.0:3003 --db-path ${DB_PATH} > /opt/logs/force-server.log 2>&1
+ force-eth-cli dapp server --config-path /opt/config.toml --server-private-key-path ${API_SERVER_PRIVKEY} --mint-private-key-path ${CKB_MINT_PRIVKY} --listen-url 0.0.0.0:3003 --db-path ${DB_PATH} > /opt/logs/force-server.log 2>&1
 }
 ckb-indexer() {
  force-eth-cli dapp ckb-indexer --config-path /opt/config.toml --db-path ${DB_PATH}  > /opt/logs/ckb-indexer.log 2>&1
