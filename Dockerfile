@@ -18,6 +18,7 @@ COPY ./config.toml /opt/
 COPY ./entrypoint.sh /opt/
 RUN chmod +x /opt/entrypoint.sh
 RUN mkdir logs
+RUN mkdir rocksdb
 
 EXPOSE 3003
 ENTRYPOINT ["/opt/entrypoint.sh"]
