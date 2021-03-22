@@ -10,8 +10,12 @@ HEADER_RELAY_PRIVKEY=1
 CKB_MINT_PRIVKY=2
 ETH_UNLOCK_PRIVKEY=2
 API_SERVER_PRIVKEY="4 5"
-CKB_ROCKSDB_PATH=/opt/rocksdb/ckb_rocksdb
-ETH_ROCKSDB_PATH=/opt/rocksdb/eth_rocksdb
+HEADER_RELAYER_CKB_ROCKSDB_PATH=/opt/rocksdb/ckb_rocksdb
+HEADER_RELAYER_ETH_ROCKSDB_PATH=/opt/rocksdb/eth_rocksdb
+
+HEADER_INDEXER_CKB_ROCKSDB_PATH=/opt/rocksdb/ckb_indexer_rocksdb
+HEADER_INDEXER_ETH_ROCKSDB_PATH=/opt/rocksdb/eth_indexer_rocksdb
+ETH_MERKLE_ROCKSDB_PATH=/opt/rocksdb/merkle_rocksdb
 
 cd /opt/force-bridge-eth/offchain-modules/
 
@@ -31,16 +35,16 @@ eth-indexer() {
  force-eth-cli dapp eth-indexer --config-path /opt/config.toml --db-path ${DB_PATH}  > /opt/logs/eth-indexer.log 2>&1
 }
 ckb-tx-relayer() {
- force-eth-cli dapp ckb-tx-relayer --config-path /opt/config.toml --db-path ${DB_PATH} -k ${ETH_UNLOCK_PRIVKEY} --rocksdb-path ${CKB_ROCKSDB_PATH} > /opt/logs/ckb-tx-relayer.log 2>&1
+ force-eth-cli dapp ckb-tx-relayer --config-path /opt/config.toml --db-path ${DB_PATH} -k ${ETH_UNLOCK_PRIVKEY} --rocksdb-path ${HEADER_INDEXER_CKB_ROCKSDB_PATH}  > /opt/logs/ckb-tx-relayer.log 2>&1
 }
 eth-tx-relayer() {
- force-eth-cli dapp eth-tx-relayer --config-path /opt/config.toml --db-path ${DB_PATH} -p ${CKB_MINT_PRIVKY} --rocksdb-path ${ETH_ROCKSDB_PATH} > /opt/logs/eth-tx-relayer.log 2>&1
+ force-eth-cli dapp eth-tx-relayer --config-path /opt/config.toml --db-path ${DB_PATH} -p ${CKB_MINT_PRIVKY} --rocksdb-path ${HEADER_INDEXER_ETH_ROCKSDB_PATH} > /opt/logs/eth-tx-relayer.log 2>&1
 }
 eth-header-indexer() {
- force-eth-cli dapp eth-header-indexer --config-path /opt/config.toml --rocksdb-path ${ETH_ROCKSDB_PATH} > /opt/logs/eth-header-indexer.log 2>&1
+ force-eth-cli dapp eth-header-indexer --config-path /opt/config.toml --rocksdb-path ${HEADER_INDEXER_ETH_ROCKSDB_PATH} --merkle-path ${ETH_MERKLE_ROCKSDB_PATH}  > /opt/logs/eth-header-indexer.log 2>&1
 }
 ckb-header-indexer() {
- force-eth-cli dapp ckb-header-indexer --config-path /opt/config.toml --rocksdb-path ${CKB_ROCKSDB_PATH} > /opt/logs/ckb-header-indexer.log 2>&1
+ force-eth-cli dapp ckb-header-indexer --config-path /opt/config.toml --rocksdb-path ${HEADER_INDEXER_CKB_ROCKSDB_PATH} > /opt/logs/ckb-header-indexer.log 2>&1
 }
 hello() {
  echo "hello world"
