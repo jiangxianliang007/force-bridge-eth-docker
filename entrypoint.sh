@@ -41,7 +41,7 @@ eth-tx-relayer() {
  force-eth-cli dapp eth-tx-relayer --config-path /opt/config.toml --db-path ${DB_PATH} -p ${CKB_MINT_PRIVKY} --rocksdb-path ${HEADER_INDEXER_ETH_ROCKSDB_PATH} > /opt/logs/eth-tx-relayer.log 2>&1
 }
 eth-header-indexer() {
- force-eth-cli dapp eth-header-indexer --config-path /opt/config.toml --rocksdb-path ${HEADER_INDEXER_ETH_ROCKSDB_PATH} --merkle-path ${ETH_MERKLE_ROCKSDB_PATH}  > /opt/logs/eth-header-indexer.log 2>&1
+ force-eth-cli dapp eth-header-indexer --config-path /opt/config.toml --rocksdb-path ${HEADER_INDEXER_ETH_ROCKSDB_PATH} > /opt/logs/eth-header-indexer.log 2>&1
 }
 ckb-header-indexer() {
  force-eth-cli dapp ckb-header-indexer --config-path /opt/config.toml --rocksdb-path ${HEADER_INDEXER_CKB_ROCKSDB_PATH} > /opt/logs/ckb-header-indexer.log 2>&1
